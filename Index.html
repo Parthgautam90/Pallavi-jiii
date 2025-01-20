@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Greeting Card for Pallavi Ji</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: radial-gradient(circle, #1e0033, #3e006e, #000033);
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .card {
+            position: relative;
+            z-index: 10;
+            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(255, 51, 133, 0.8);
+            animation: zoomIn 1.5s ease-out;
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-family: 'Brush Script MT', cursive;
+            color: #ff66cc;
+            text-shadow: 0 0 50px rgba(255, 102, 204, 1), 0 0 100px rgba(255, 102, 204, 0.8);
+        }
+        p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 20px;
+            font-weight: 300;
+        }
+        button {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 1.4rem;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #ff3385, #ff66cc);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 51, 133, 0.8);
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #ff0055, #ff99cc);
+            transform: scale(1.2);
+            box-shadow: 0 15px 50px rgba(255, 0, 85, 0.9);
+        }
+        /* Background Decorations */
+        .stars, .particles, .hearts, .aurora {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .stars div, .particles div, .hearts div {
+            position: absolute;
+        }
+        .stars div {
+            background: white;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.2; }
+        }
+        .particles div {
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: floatUp 6s ease-in-out infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+        }
+        .hearts div {
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 0, 85, 0.8);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: floatHeart 5s ease-in-out infinite;
+        }
+        @keyframes floatHeart {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-300px) scale(1.5); opacity: 0; }
+        }
+        .aurora {
+            background: linear-gradient(120deg, rgba(0, 255, 204, 0.4), rgba(255, 102, 204, 0.4));
+            filter: blur(100px);
+            animation: moveAurora 5s infinite alternate ease-in-out;
+        }
+        @keyframes moveAurora {
+            0% { transform: scale(1.5) translate(0, 0); }
+            100% { transform: scale(1.7) translate(-100px, -100px); }
+        }
+        /* Zoom In Animation for the Card */
+        @keyframes zoomIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="aurora"></div>
+    <div class="stars"></div>
+    <div class="particles"></div>
+    <div class="hearts"></div>
+    <div class="card">
+        <h1 id="greeting">Dear Pallavi Ji, You Are Amazing!</h1>
+        <p id="subtext">Thank you for filling my life with love and light.</p>
+        <button onclick="nextGreeting()">Next</button>
+    </div>
+    <script>
+        const starsContainer = document.querySelector('.stars');
+        const particlesContainer = document.querySelector('.particles');
+        const heartsContainer = document.querySelector('.hearts');
+        const starCount = 120, particleCount = 60, heartCount = 30;
+
+        // Generate Stars
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 3}s`;
+            starsContainer.appendChild(star);
+        }
+
+        // Generate Particles
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.bottom = `0px`;
+            particlesContainer.appendChild(particle);
+        }
+
+        // Generate Floating Hearts
+        for (let i = 0; i < heartCount; i++) {
+            const heart = document.createElement('div');
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.bottom = `0px`;
+            heartsContainer.appendChild(heart);
+        }
+
+        const greetings = [
+            "You are my universe!",
+            "Pallavi Ji, you light up my world!",
+            "You make every moment magical!",
+            "Life is beautiful with you in it!",
+            "Together forever, my love!"
+        ];
+        const subtexts = [
+            "You're the stars in my sky.",
+            "Your love is my greatest gift.",
+            "Every second with you is a treasure.",
+            "Thank you for being you!",
+            "My heart beats only for you."
+        ];
+
+        function nextGreeting() {
+            const randomIndex = Math.floor(Math.random() * greetings.length);
+            document.getElementById('greeting').innerText = greetings[randomIndex];
+            document.getElementById('subtext').innerText = subtexts[randomIndex];
+        }
+    </script>
+</body>
+</html>
